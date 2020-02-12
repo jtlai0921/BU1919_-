@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+import sys, array, os
+a = range(100)
+b = xrange(100)
+path = os.path.join(sys.path[0], 'case_11_9.py')
+f = open(path)
+c = f.readlines()
+f.seek(0)
+d = f.xreadlines()
+f.seek(0)
+e = f.readline()
+f.close()
+print "range:     comsume %i byte"%sys.getsizeof(a)
+print "xrange:    comsume %i byte"%sys.getsizeof(b)
+print "readlines: comsume %i byte"%sys.getsizeof(c)
+print "xreadlines:comsume %i byte"%sys.getsizeof(d)
+print "readline:  comsume %i byte"%sys.getsizeof(e)

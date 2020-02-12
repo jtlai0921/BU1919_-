@@ -1,0 +1,147 @@
+*Heading
+** billet_case1_std_coarse_rez.inp
+** ABAQUS/Standard:  Case 1 Rezoning.  
+** Uses billet_case1_std_coarse.inp
+**
+** PARTS
+**
+*Part, name=Billet
+*End Part
+*Part, name=RIGID
+*End Part
+**
+** ASSEMBLY
+**
+*Assembly, name=Assembly
+**  
+*Instance, name=Billet-1, part=Billet
+*Node, input=billet_coarse_nodes_rez.inp
+*Element, type=CAX4R, 
+input=billet_coarse_elem_rez.inp
+*Nset, nset=Billet-1-RefPt_, internal
+ 301,
+*Nset, nset=AXIS
+ 10, 11, 64, 65, 66, 67, 68, 
+ 69, 70, 71, 72, 73, 74
+*Elset, elset=AXIS, generate
+ 134,  266,   12
+*Nset, nset=MIDDLE
+  2,  3, 11, 18, 19, 20, 21, 22, 23, 
+ 75, 76, 77, 78, 79, 80, 81, 82,  83, 
+ 84, 85
+*Elset, elset=MIDDLE
+   7,  14,  21,  28,  35,  42,  49, 
+ 255, 256, 257, 258, 259, 260, 261, 
+ 262, 263, 264, 265, 266
+** Region: (BILLET:Picked)
+*Elset, elset=_I1, internal, generate
+   1,  266,    1
+** Section: BILLET
+*Solid Section, elset=_I1, material=METAL
+1.,
+*End Instance
+**  
+*Instance, name=RIGID-1, part=RIGID
+*Node
+      1,           0.,       0.0084
+*Nset, nset=RIGID-1-RefPt_, internal
+ 1,
+*Surface, type=SEGMENTS, name=RIGID
+START,         0.02,       0.0084
+ LINE,           0.,       0.0084
+*Rigid Body, ref node=RIGID-1-RefPt_, analytical surface=RIGID
+*End Instance
+*Nset, nset=NRIGID, instance=RIGID-1
+ 1,
+*Nset, nset=MIDDLE, instance=Billet-1
+  2,  3, 11, 18, 19, 20, 21, 22, 23, 
+ 75, 76, 77, 78, 79, 80, 81, 82, 83, 
+ 84, 85
+*Elset, elset=MIDDLE, instance=Billet-1
+   7,  14,  21,  28,  35,  42,  49, 
+ 255, 256, 257, 258, 259, 260, 261, 
+ 262, 263,264, 265, 266
+*Nset, nset=AXIS, instance=Billet-1
+  9, 10, 11, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74
+*Elset, elset=AXIS, instance=Billet-1, generate
+ 122,  266,   12
+*Elset, elset=_ASURF_S3, internal, instance=Billet-1
+ 43, 44, 45, 46, 47, 48, 49, 92, 93, 94, 95, 96, 97, 98
+*Elset, elset=_ASURF_S4, internal, instance=Billet-1, generate
+ 50,  92,   7
+*Elset, elset=_ASURF_S1, internal, instance=Billet-1, generate
+  99,  110,    1
+*Surface, type=ELEMENT, name=ASURF
+_ASURF_S3, S3
+_ASURF_S4, S4
+_ASURF_S1, S1
+*End Assembly
+** 
+** MATERIALS
+** 
+*Material, name=METAL
+*Elastic
+ 2e+11, 0.3
+*Plastic
+   7e+08, 0.
+ 3.7e+09,10.
+** 
+** INTERACTION PROPERTIES
+** 
+*Surface Interaction, name=ROUGH
+1.,
+*Friction, rough
+*Surface Behavior, pressure-overclosure=HARD
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: AXIS Type: Displacement/Rotation
+*Boundary
+AXIS, 1, 1
+** Name: FIX_RIGID Type: Displacement/Rotation
+*Boundary
+NRIGID, 1, 1
+NRIGID, 6, 6
+** Name: MIDDLE Type: Displacement/Rotation
+*Boundary
+MIDDLE, 2, 2
+** 
+** INTERACTIONS
+** 
+** Interaction: RIGID to ASURF
+*Contact Pair, interaction=ROUGH
+ASURF, RIGID-1.RIGID
+*MAP SOLUTION, STEP=1 
+** 
+** STEP: STEP-1
+** 
+*Step, nlgeom, inc=200
+STEP-1: REZONED MESH MOVE TO 100 PERCENT DIE DISPLACEMENT 
+ (60 PERCENT UPSET) 
+*Static
+0.1, 1., 1e-05, 1.
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: RIGID_100_PERCENT Type: Displacement/Rotation
+*Boundary
+NRIGID, 2, 2, -0.0024
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=0
+*Monitor, dof=2, node=NRIGID, frequency=2
+*Output, field, variable=PRESELECT
+*Output, history, frequency=1
+*Energy Output
+ALLAE, ALLCD, ALLFD, ALLIE, ALLKE, 
+ALLPD, ALLSE, ALLVD, ALLWK, ETOTAL
+*Output, history, frequency=1
+*Node Output, nset=NRIGID
+U2, RF2
+*El Print, freq=999999
+*Node Print, freq=999999
+*Contact File, slave=ASURF, frequency=40
+*Node File, nset=NRIGID
+U,RF
+*End Step

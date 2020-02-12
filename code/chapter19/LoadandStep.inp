@@ -1,0 +1,51 @@
+*Surface, type=NODE, name=Set-fix_CNS
+Set-fix, 1.
+*Surface, type=NODE, name=Set-twist_CNS
+Set-twist, 1.
+*Coupling, constraint name=Constraint-fix, ref node=Set-fixRP, surface=Set-fix_CNS
+*Kinematic
+*Coupling, constraint name=Constraint-twist, ref node=Set-twistRP, surface=Set-twist_CNS
+*Kinematic
+*Material, name=steel
+*Elastic
+210000., 0.3
+*Boundary
+Set-fixRP, 1, 1
+Set-fixRP, 2, 2
+Set-fixRP, 3, 3
+Set-fixRP, 4, 4
+Set-fixRP, 5, 5
+Set-fixRP, 6, 6
+*Boundary
+Set-twistRP, 1, 1
+Set-twistRP, 2, 2
+Set-twistRP, 3, 3
+Set-twistRP, 4, 4
+Set-twistRP, 5, 5
+Set-twistRP, 6, 6
+** ----------------------------------------------------------------
+*Step, name=Step-twist, nlgeom=YES, inc=1000
+*Static
+0.05, 1., 1e-06, 0.2
+*Boundary, op=NEW
+Set-fixRP, 1, 1
+Set-fixRP, 2, 2
+Set-fixRP, 3, 3
+Set-fixRP, 4, 4
+Set-fixRP, 5, 5
+Set-fixRP, 6, 6
+*Boundary, op=NEW
+Set-twistRP, 1, 1
+Set-twistRP, 2, 2
+Set-twistRP, 3, 3
+Set-twistRP, 4, 4
+Set-twistRP, 5, 5, 3.1415926
+Set-twistRP, 6, 6
+*Restart, write, frequency=0
+*Output, field, number interval=10, time marks=NO
+*Node Output
+CF, RF, RM, U
+*Element Output, directions=YES
+LE, S
+*Output, history, variable=PRESELECT
+*End Step

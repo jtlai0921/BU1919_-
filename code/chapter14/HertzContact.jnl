@@ -1,0 +1,538 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    viewStyle=AXISYM)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].ArcByCenterEnds(center=(0.0, 
+    10.0), direction=COUNTERCLOCKWISE, point1=(0.0, 0.0), point2=(10.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 10.0), point2=(
+    10.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].Part(dimensionality=AXISYMMETRIC, name='Ball', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Ball'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    viewStyle=AXISYM)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    15.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, 0.0), point2=(
+    15.0, -10.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, -10.0), 
+    point2=(0.0, -10.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, -10.0), point2=
+    (0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[6])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[6])
+mdb.models['Model-1'].Part(dimensionality=AXISYMMETRIC, name='Base', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Base'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((210000.0, 0.3), ))
+mdb.models['Model-1'].materials['Steel'].Density(table=((7.9e-09, ), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name=
+    'steel-section', thickness=None)
+mdb.models['Model-1'].parts['Base'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Base'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='steel-section', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['Ball'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    faces=mdb.models['Model-1'].parts['Ball'].faces.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='steel-section', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByThreePoints(coordSysType=
+    CYLINDRICAL, origin=(0.0, 0.0, 0.0), point1=(1.0, 0.0, 0.0), point2=(0.0, 
+    0.0, -1.0))
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Ball-1', part=
+    mdb.models['Model-1'].parts['Ball'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Base-1', part=
+    mdb.models['Model-1'].parts['Base'])
+mdb.models['Model-1'].StaticStep(initialInc=0.01, maxInc=0.3, maxNumInc=1000, 
+    name='Contact', previous='Initial')
+mdb.models['Model-1'].TimePoint(name='TimePoints-1', points=((0.05, ), (0.1, ), 
+    (0.2, ), (0.4, ), (0.6, ), (0.8, ), (1.0, )))
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(timePoint=
+    'TimePoints-1')
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(timeMarks=
+    OFF)
+mdb.models['Model-1'].ContactProperty('IntProp-1')
+mdb.models['Model-1'].interactionProperties['IntProp-1'].TangentialBehavior(
+    formulation=FRICTIONLESS)
+mdb.models['Model-1'].interactionProperties['IntProp-1'].NormalBehavior(
+    allowSeparation=ON, constraintEnforcementMethod=DEFAULT, 
+    pressureOverclosure=HARD)
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=OVERCLOSED, 
+    clearanceRegion=None, createStepName='Contact', datumAxis=None, 
+    initialClearance=OMIT, interactionProperty='IntProp-1', master=Region(
+    side1Edges=mdb.models['Model-1'].rootAssembly.instances['Base-1'].edges.getSequenceFromMask(
+    mask=('[#8 ]', ), )), name='Int-1', slave=Region(
+    side1Edges=mdb.models['Model-1'].rootAssembly.instances['Ball-1'].edges.getSequenceFromMask(
+    mask=('[#2 ]', ), )), sliding=FINITE, thickness=ON, tied=OFF)
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Contact', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'BC-1', region=Region(
+    edges=mdb.models['Model-1'].rootAssembly.instances['Base-1'].edges.getSequenceFromMask(
+    mask=('[#2 ]', ), )), u1=UNSET, u2=0.0, ur3=UNSET)
+mdb.models['Model-1'].boundaryConditions['BC-1'].move('Contact', 'Initial')
+mdb.models['Model-1'].YasymmBC(createStepName='Contact', name='BC-2', region=
+    Region(
+    edges=mdb.models['Model-1'].rootAssembly.instances['Base-1'].edges.getSequenceFromMask(
+    mask=('[#1 ]', ), )+\
+    mdb.models['Model-1'].rootAssembly.instances['Ball-1'].edges.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+mdb.models['Model-1'].boundaryConditions['BC-2'].move('Contact', 'Initial')
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Ball-1'].vertices[0])
+mdb.models['Model-1'].Coupling(controlPoint=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[10], )), couplingType=
+    DISTRIBUTING, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'Constraint-1', surface=Region(
+    side1Edges=mdb.models['Model-1'].rootAssembly.instances['Ball-1'].edges.getSequenceFromMask(
+    mask=('[#4 ]', ), )), u1=ON, u2=ON, ur3=ON, weightingMethod=UNIFORM)
+mdb.models['Model-1'].ConcentratedForce(cf2=300.0, createStepName='Contact', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-1', region=
+    Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[10], )))
+mdb.models['Model-1'].loads['Load-1'].setValues(cf2=-300.0, distributionType=
+    UNIFORM, field='')
+mdb.models['Model-1'].parts['Ball'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end1Edges=
+    mdb.models['Model-1'].parts['Ball'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ), maxSize=2.0, minSize=0.2)
+mdb.models['Model-1'].parts['Ball'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end1Edges=
+    mdb.models['Model-1'].parts['Ball'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ), maxSize=1.5, minSize=0.2)
+mdb.models['Model-1'].parts['Ball'].seedEdgeBySize(constraint=FINER, 
+    deviationFactor=0.1, edges=
+    mdb.models['Model-1'].parts['Ball'].edges.getSequenceFromMask(('[#4 ]', ), 
+    ), size=1.5)
+mdb.models['Model-1'].parts['Ball'].setElementType(elemTypes=(ElemType(
+    elemCode=CAX4R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    hourglassControl=DEFAULT, distortionControl=DEFAULT), ElemType(
+    elemCode=CAX3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Ball'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Ball'].generateMesh()
+mdb.models['Model-1'].parts['Base'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end1Edges=
+    mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(('[#1 ]', ), 
+    ), end2Edges=mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(
+    ('[#2 ]', ), ), maxSize=1.5, minSize=0.2)
+mdb.models['Model-1'].parts['Base'].setElementType(elemTypes=(ElemType(
+    elemCode=CAX4R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    hourglassControl=DEFAULT, distortionControl=DEFAULT), ElemType(
+    elemCode=CAX3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Base'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), ))
+mdb.models['Model-1'].parts['Base'].generateMesh()
+mdb.models['Model-1'].parts['Base'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Base'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Base'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Base'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end2Edges=
+    mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ), maxSize=1.5, minSize=0.2)
+mdb.models['Model-1'].parts['Base'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Base'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Base'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Base'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end2Edges=
+    mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ), maxSize=1.5, minSize=0.1)
+mdb.models['Model-1'].parts['Base'].generateMesh()
+mdb.models['Model-1'].parts['Ball'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Ball'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Ball'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end1Edges=
+    mdb.models['Model-1'].parts['Ball'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ), maxSize=1.5, minSize=0.1)
+mdb.models['Model-1'].parts['Ball'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=50, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='HertzContact', nodalOutputPrecision=
+    SINGLE, numCpus=1, queue=None, scratch='', type=ANALYSIS, userSubroutine=''
+    , waitHours=0, waitMinutes=0)
+mdb.jobs['HertzContact'].submit(consistencyChecking=OFF)
+mdb.jobs['HertzContact']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'IE1UA6SFRVE9LTO', 'handle': 0, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR CONTACT PAIR (ASSEMBLY__PICKEDSURF7-ASSEMBLY__PICKEDSURF6), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '2 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\abaqus_workspace\\HertzContact.odb', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'IE1UA6SFRVE9LTO', 'handle': 2236, 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.01, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HertzContact']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HertzContact', 'memory': 24.8411893844604})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.01, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 1, 'stepTime': 0.01, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 12, 'iterations': 13, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.02, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 2, 'stepTime': 0.02, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 1, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.035, 'attempts': 1, 
+    'timeIncrement': 0.015, 'increment': 3, 'stepTime': 0.035, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.0575, 'attempts': 1, 
+    'timeIncrement': 0.0225, 'increment': 4, 'stepTime': 0.0575, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.09125, 'attempts': 1, 
+    'timeIncrement': 0.03375, 'increment': 5, 'stepTime': 0.09125, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.141875, 
+    'attempts': 1, 'timeIncrement': 0.050625, 'increment': 6, 
+    'stepTime': 0.141875, 'step': 1, 'jobName': 'HertzContact', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.2178125, 
+    'attempts': 1, 'timeIncrement': 0.0759375, 'increment': 7, 
+    'stepTime': 0.2178125, 'step': 1, 'jobName': 'HertzContact', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.33171875, 
+    'attempts': 1, 'timeIncrement': 0.11390625, 'increment': 8, 
+    'stepTime': 0.33171875, 'step': 1, 'jobName': 'HertzContact', 'severe': 1, 
+    'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.502578125, 
+    'attempts': 1, 'timeIncrement': 0.170859375, 'increment': 9, 
+    'stepTime': 0.502578125, 'step': 1, 'jobName': 'HertzContact', 'severe': 0, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.7588671875, 
+    'attempts': 1, 'timeIncrement': 0.2562890625, 'increment': 10, 
+    'stepTime': 0.7588671875, 'step': 1, 'jobName': 'HertzContact', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.2411328125, 'increment': 11, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(JOB_COMPLETED, {
+    'time': 'Sun Feb 23 10:29:08 2014', 'jobName': 'HertzContact'})
+mdb.models['Model-1'].parts['Ball'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Ball'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Ball'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end1Edges=
+    mdb.models['Model-1'].parts['Ball'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ), maxSize=1.5, minSize=0.05)
+mdb.models['Model-1'].parts['Ball'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Base'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Base'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Base'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(('[#3 ]', ), 
+    ))
+mdb.models['Model-1'].parts['Base'].seedEdgeByBias(biasMethod=SINGLE, 
+    constraint=FINER, end1Edges=
+    mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(('[#8 ]', ), 
+    ), end2Edges=mdb.models['Model-1'].parts['Base'].edges.getSequenceFromMask(
+    ('[#1 ]', ), ), maxSize=1.5, minSize=0.05)
+mdb.models['Model-1'].parts['Base'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.jobs['HertzContact'].submit(consistencyChecking=OFF)
+mdb.jobs['HertzContact']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'IE1UA6SFRVE9LTO', 'handle': 0, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR CONTACT PAIR (ASSEMBLY__PICKEDSURF7-ASSEMBLY__PICKEDSURF6), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\abaqus_workspace\\HertzContact.odb', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'IE1UA6SFRVE9LTO', 'handle': 3056, 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.01, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HertzContact']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HertzContact', 'memory': 24.743914604187})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.01, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 1, 'stepTime': 0.01, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 16, 'iterations': 18, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.02, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 2, 'stepTime': 0.02, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.035, 'attempts': 1, 
+    'timeIncrement': 0.015, 'increment': 3, 'stepTime': 0.035, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 1, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.0575, 'attempts': 1, 
+    'timeIncrement': 0.0225, 'increment': 4, 'stepTime': 0.0575, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.09125, 'attempts': 1, 
+    'timeIncrement': 0.03375, 'increment': 5, 'stepTime': 0.09125, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.141875, 
+    'attempts': 1, 'timeIncrement': 0.050625, 'increment': 6, 
+    'stepTime': 0.141875, 'step': 1, 'jobName': 'HertzContact', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.2178125, 
+    'attempts': 1, 'timeIncrement': 0.0759375, 'increment': 7, 
+    'stepTime': 0.2178125, 'step': 1, 'jobName': 'HertzContact', 'severe': 1, 
+    'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.33171875, 
+    'attempts': 1, 'timeIncrement': 0.11390625, 'increment': 8, 
+    'stepTime': 0.33171875, 'step': 1, 'jobName': 'HertzContact', 'severe': 0, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.502578125, 
+    'attempts': 1, 'timeIncrement': 0.170859375, 'increment': 9, 
+    'stepTime': 0.502578125, 'step': 1, 'jobName': 'HertzContact', 'severe': 1, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.7588671875, 
+    'attempts': 1, 'timeIncrement': 0.2562890625, 'increment': 10, 
+    'stepTime': 0.7588671875, 'step': 1, 'jobName': 'HertzContact', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.2411328125, 'increment': 11, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HertzContact']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(JOB_COMPLETED, {
+    'time': 'Sun Feb 23 10:35:17 2014', 'jobName': 'HertzContact'})
+# Save by sujinghe on Sun Feb 23 11:17:10 2014
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].loads['Load-1'].setValues(cf2=-3000.0, distributionType=
+    UNIFORM, field='')
+mdb.jobs['HertzContact'].submit(consistencyChecking=OFF)
+mdb.jobs['HertzContact']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'IE1UA6SFRVE9LTO', 'handle': 0, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR CONTACT PAIR (ASSEMBLY__PICKEDSURF7-ASSEMBLY__PICKEDSURF6), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\abaqus_workspace\\HertzContact.odb', 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'IE1UA6SFRVE9LTO', 'handle': 1028, 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.01, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HertzContact']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HertzContact', 'memory': 24.743914604187})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.01, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 1, 'stepTime': 0.01, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 4, 'iterations': 6, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.02, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 2, 'stepTime': 0.02, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 1, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.035, 'attempts': 1, 
+    'timeIncrement': 0.015, 'increment': 3, 'stepTime': 0.035, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.0575, 'attempts': 1, 
+    'timeIncrement': 0.0225, 'increment': 4, 'stepTime': 0.0575, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 1, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.09125, 'attempts': 1, 
+    'timeIncrement': 0.03375, 'increment': 5, 'stepTime': 0.09125, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.141875, 
+    'attempts': 1, 'timeIncrement': 0.050625, 'increment': 6, 
+    'stepTime': 0.141875, 'step': 1, 'jobName': 'HertzContact', 'severe': 1, 
+    'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.2178125, 
+    'attempts': 1, 'timeIncrement': 0.0759375, 'increment': 7, 
+    'stepTime': 0.2178125, 'step': 1, 'jobName': 'HertzContact', 'severe': 0, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.33171875, 
+    'attempts': 1, 'timeIncrement': 0.11390625, 'increment': 8, 
+    'stepTime': 0.33171875, 'step': 1, 'jobName': 'HertzContact', 'severe': 1, 
+    'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.502578125, 
+    'attempts': 1, 'timeIncrement': 0.170859375, 'increment': 9, 
+    'stepTime': 0.502578125, 'step': 1, 'jobName': 'HertzContact', 'severe': 1, 
+    'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 0.7588671875, 
+    'attempts': 1, 'timeIncrement': 0.2562890625, 'increment': 10, 
+    'stepTime': 0.7588671875, 'step': 1, 'jobName': 'HertzContact', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.2411328125, 'increment': 11, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'HertzContact', 'severe': 1, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HertzContact']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HertzContact'})
+mdb.jobs['HertzContact']._Message(JOB_COMPLETED, {
+    'time': 'Sat Mar 01 15:59:19 2014', 'jobName': 'HertzContact'})
+# Save by sujinghe on Sat Mar 01 16:03:46 2014
+# Save by sujinghe on Sat Mar 01 16:03:49 2014

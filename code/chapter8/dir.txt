@@ -1,0 +1,11 @@
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter1
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter2
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter3
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter4
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter5
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter6
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter7
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\chapter8
+dir: E:\快盘\我的资料\MyBook\pythonBook\BookScripting\tools
+you get 9 dirs in the path.
+you get 0 files in the path.

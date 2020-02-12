@@ -1,0 +1,154 @@
+*Heading
+** billet_case1_std_coarse.inp
+** ABAQUS/Standard:  Case 1
+**
+** PARTS
+**
+*Part, name=Billet
+*End Part
+*Part, name=RIGID
+*End Part
+**
+** ASSEMBLY
+**
+*Assembly, name=Assembly
+**  
+*Instance, name=Billet-1, part=Billet
+*Node, input=billet_coarse_nodes.inp
+*Element, type=CAX4R, input=billet_coarse_elem.inp
+** Region: (BILLET:Picked)
+*Elset, elset=_I1, internal, generate
+   1,  144,    1
+** Section: BILLET
+*Solid Section, elset=_I1, material=METAL
+1.,
+*End Instance
+**  
+*Instance, name=RIGID-1, part=RIGID
+*Node
+      1,           0.,        0.015
+*Nset, nset=RIGID-1-RefPt_, internal
+ 1,
+*Surface, type=SEGMENTS, name=RIGID
+START,         0.02,        0.015
+ LINE,           0.,        0.015
+*Rigid Body, ref node=RIGID-1-RefPt_, analytical surface=RIGID
+*End Instance
+*Nset, nset=NRIGID, instance=RIGID-1
+ 1,
+*Nset, nset=MIDDLE, instance=Billet-1, generate
+  1,  13,   1
+*Elset, elset=MIDDLE, instance=Billet-1, generate
+  1,  12,   1
+*Nset, nset=AXIS, instance=Billet-1, generate
+   1,  144,   13
+*Elset, elset=AXIS, instance=Billet-1, generate
+   1,  121,   12
+*Elset, elset=_ASURF_S2, internal, 
+instance=Billet-1, generate
+  12,  144,   12
+*Elset, elset=_ASURF_S3, internal, 
+instance=Billet-1, generate
+ 133,  144,    1
+*Surface, type=ELEMENT, name=ASURF
+_ASURF_S2, S2
+_ASURF_S3, S3
+*End Assembly
+** 
+** MATERIALS
+** 
+*Material, name=METAL
+*Elastic
+ 2e+11, 0.3
+*Plastic
+   7e+08, 0.
+ 3.7e+09,10.
+** 
+** INTERACTION PROPERTIES
+** 
+*Surface Interaction, name=ROUGH
+1.,
+*Friction, rough
+*Surface Behavior, pressure-overclosure=HARD
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: AXIS Type: Displacement/Rotation
+*Boundary
+AXIS, 1, 1
+** Name: FIX_RIGID Type: Displacement/Rotation
+*Boundary
+NRIGID, 1, 1
+NRIGID, 6, 6
+** Name: MIDDLE Type: Displacement/Rotation
+*Boundary
+MIDDLE, 2, 2
+** 
+** INTERACTIONS
+** 
+** Interaction: RIGID to ASURF
+*Contact Pair, interaction=ROUGH
+ASURF, RIGID-1.RIGID
+** 
+** STEP: STEP-1
+** 
+*Step, nlgeom, inc=200
+STEP-1: 73.3 PERCENT OF DIE DISPLACEMENT 
+ (44% BILLET UPSET)
+*Static
+0.015, 1.,1.0e-5,1.
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: RIGID_44_PERCENT Type: Displacement/Rotation
+*Boundary
+NRIGID, 2, 2, -0.0066
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=1
+*Monitor, dof=2, node=NRIGID, frequency=2
+*Output, field, variable=PRESELECT
+*Output, history, frequency=1
+*Energy Output
+ALLAE, ALLCD, ALLFD, ALLIE, ALLKE, 
+ALLPD, ALLSE, ALLVD, ALLWK, ETOTAL
+*Output, history, frequency=1
+*Node Output, nset=NRIGID
+U2, RF2
+*El Print, freq=999999
+*Node Print, freq=999999
+*Contact File, slave=ASURF, frequency=40
+*Node File, nset=NRIGID
+U,RF
+*End Step
+** 
+** STEP: STEP-2
+** 
+*Step, inc=200
+STEP-2: 100 PERCENT OF DIE DISPLACEMENT 
+ (60% BILLET UPSET)
+*Static
+0.015, 1., 1e-05, 1.
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: RIGID_44_PERCENT Type: Displacement/Rotation
+*Boundary
+NRIGID, 2, 2, -0.009
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=1
+*Output, field, variable=PRESELECT
+*Output, history, frequency=1
+*Energy Output
+ALLAE, ALLCD, ALLFD, ALLIE, ALLKE, 
+ALLPD, ALLSE, ALLVD, ALLWK, ETOTAL
+*Output, history, frequency=1
+*Node Output, nset=NRIGID
+U2, RF2
+*Contact File, slave=ASURF, frequency=40
+*Node File, nset=NRIGID
+U,RF
+*End Step
